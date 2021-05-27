@@ -11,6 +11,8 @@ def index(request):
 def pred(request):
     return render(request, 'pred_app/prediction.html')
 
+def blog(request):
+    return render(request, 'pred_app/blog.html')
 def contact(request):
     # if request.method=="POST":
     #     F_name=request.POST['F_name']

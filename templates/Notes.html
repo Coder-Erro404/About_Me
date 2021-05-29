@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h1 style="text-align: center;">Blog News</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-9"><div class="date">October 09 2018</div></div>
+    <div class="col-4"><h2>First Article</h2></div>
+    <div class="col-6"><p>Donec semper dui nibh. Proin non est sit amet dui malesuada scelerisque vel vitae sem. Suspendisse vel gravida augue, eget pharetra magna. Praesent condimentum lectus eu felis scelerisque, nec ornare arcu dignissim. In hac habitasse platea dictumst.
+      In eleifend consequat imperdiet. Fusce ut ultricies odio, eu porta mauris. Nunc sagittis hendrerit dictum. Maecenas vulputate nibh a arcu egestas sagittis. Etiam euismod erat sit amet consequat viverra. Phasellus in ornare libero, et ultricies mauris.
+      Aliquam accumsan nulla in aliquet iaculis. Nullam sit amet nibh molestie, pretium sapien id, faucibus massa. Nam finibus ipsum ac nisi laoreet mattis. Quisque sollicitudin finibus consectetur. Maecenas eu sem mauris. Phasellus sodales neque.
+    </p>
+     <hr>
+    </div>
+  </div>
+</div>
+
+ <div class="post">
+    <div class="date">October 09 2018</div>
+
+    <h2>First Article</h2>
+
+    <p>Donec semper dui nibh. Proin non est sit amet dui malesuada scelerisque vel vitae sem. Suspendisse vel gravida augue, eget pharetra magna. Praesent condimentum lectus eu felis scelerisque, nec ornare arcu dignissim. In hac habitasse platea dictumst.
+      In eleifend consequat imperdiet. Fusce ut ultricies odio, eu porta mauris. Nunc sagittis hendrerit dictum. Maecenas vulputate nibh a arcu egestas sagittis. Etiam euismod erat sit amet consequat viverra. Phasellus in ornare libero, et ultricies mauris.
+      Aliquam accumsan nulla in aliquet iaculis. Nullam sit amet nibh molestie, pretium sapien id, faucibus massa. Nam finibus ipsum ac nisi laoreet mattis. Quisque sollicitudin finibus consectetur. Maecenas eu sem mauris. Phasellus sodales neque.
+    </p>
+    <hr>
+  </div>
+ {% for addblog in page_obj  %}
+
+  <div class="post">
+    <div class="date">October 09 2018</div>
+
+    <h2>First Article</h2>
+
+    <p>Donec semper dui nibh. Proin non est sit amet dui malesuada scelerisque vel vitae sem. Suspendisse vel gravida augue, eget pharetra magna. Praesent condimentum lectus eu felis scelerisque, nec ornare arcu dignissim. In hac habitasse platea dictumst.
+      In eleifend consequat imperdiet. Fusce ut ultricies odio, eu porta mauris. Nunc sagittis hendrerit dictum. Maecenas vulputate nibh a arcu egestas sagittis. Etiam euismod erat sit amet consequat viverra. Phasellus in ornare libero, et ultricies mauris.
+      Aliquam accumsan nulla in aliquet iaculis. Nullam sit amet nibh molestie, pretium sapien id, faucibus massa. Nam finibus ipsum ac nisi laoreet mattis. Quisque sollicitudin finibus consectetur. Maecenas eu sem mauris. Phasellus sodales neque.
+    </p>
+    <hr>
+  </div>
+      {% endfor %}
+<center>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a class="center" href="?page=1">&laquo; first</a>
+            <a class="center" href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current center">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="center" href="?page={{ page_obj.next_page_number }}">next</a>
+            <a class="center" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</center>
+{% endblock content %}

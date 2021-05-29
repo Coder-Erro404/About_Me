@@ -1052,3 +1052,24 @@ hr.new4 {
 }
 
 /* blog end */
+.date {
+  text-transform: uppercase;
+  color: #c02942;
+  letter-spacing: 0.1rem;
+}
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.post {
+  margin-top: 20px;
+  padding: 50px;
+}
+

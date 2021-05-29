@@ -18,12 +18,8 @@ def project(request):
     page_obj = paginator.get_page(page_number)
     return render(request, 'projects.html',{'page_obj': page_obj})
     
-def blog(request):
-    data = addblog.objects.all()
-    paginator = Paginator(data, 2) # Show 25 contacts per page.
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    return render(request, 'blog.html',{'page_obj': page_obj})
+def Notes(request):
+    return render(request, 'Notes.html')
 
 def addblogs(request):
     data = addblog.objects.all()

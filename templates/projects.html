@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<h1 style="text-align: center;">Project's</h1>
+<br>
+ {% for addblog in page_obj  %}
+
+    <section class="blog" id="Blog">
+         <div class="blog-card">
+        <div class="meta">
+        <div class="photo" style="background-image: url({{ addblog.Img.url }})"></div>      <ul class="details">
+        <li class="author"><a href="#">{{ addblog.p_name}}</a></li>
+        <li class="date">{{ addblog.timeStamp }}</li>
+        <li class="tags">
+          <ul>
+            <li><a href="#">Django</a></li>
+            <li><a href="#">Coding</a></li>
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">Bootstrap</a></li>
+            <li><a href="#">JavaScript</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="description">
+      <h1>{{ addblog.p_name }}</h1>
+      <h2>{{ addblog.author }}</h2>
+      <p> {{ addblog.content }}</p>
+      <p class="read-more">
+        <a href="#">Read More</a>
+      </p>
+    </div>
+  </div>
+                    </div>
+                    </div>
+            </section>
+      {% endfor %}
+<center>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a class="center" href="?page=1">&laquo; first</a>
+            <a class="center" href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current center">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="center" href="?page={{ page_obj.next_page_number }}">next</a>
+            <a class="center" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</center>
+
+
+{% endblock content %}

@@ -1,21 +1,35 @@
 from django.shortcuts import render
 from django.contrib import  messages
-from .models import Contact
+from .models import Contact ,addblog
 from django.contrib import  messages
-
+from django.core.paginator import Paginator
 
 # --------------- MAIN WEB PAGES -----------------------------
 
 def index(request):
 
-	return render(request, 'pred_app/index.html')
+	return render(request, 'index.html')
 	 
 
-def pred(request):
-    return render(request, 'pred_app/prediction.html')
-
+def project(request):
+    data = addblog.objects.all()
+    paginator = Paginator(data, 3) # Show 25 contacts per page.
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'projects.html',{'page_obj': page_obj})
+    
 def blog(request):
-    return render(request, 'pred_app/blog.html')
+    data = addblog.objects.all()
+    paginator = Paginator(data, 2) # Show 25 contacts per page.
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'blog.html',{'page_obj': page_obj})
+
+def addblogs(request):
+    data = addblog.objects.all()
+    paginator = Paginator(data, 25)
+    blog = {"sno": data}
+    return render(request, 'addblog.html',blog)
 
 def contact(request):
     if request.method=="POST":
@@ -30,6 +44,6 @@ def contact(request):
             contact=Contact(F_name=F_name,L_name=L_name , email=email, phone=phone, content=content)
             contact.save()
             messages.success(request, "Your message has been successfully sent")
-    return render(request, 'pred_app/contact.html')
+    return render(request, 'contact.html')
 
 # -----------------------------------------------------------

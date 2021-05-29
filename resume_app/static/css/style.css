@@ -41,7 +41,7 @@ ul.navbar-nav li
 }
 .navbar-nav li a:hover
 {
-  color:#fff!important;
+  color:rgb(255, 14, 14)!important;
 
 }
 .navbar-brand {
@@ -61,21 +61,21 @@ a.navbar-brand .fa-globe:hover
     background-color: black!important;
 }
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-    background-color: #fff!important;
+    background-color: rgb(31, 119, 100)!important;
 }
 
 .container {
   margin: 0 auto;
 }
 .splash {
-  background:url("/static/pred_app/img/AI.gif") no-repeat fixed center bottom;
+  background:url("/static/img/AI.gif") no-repeat fixed center bottom;
 	background-size: cover;
 	color: #fff;
 }
 
 .splash .container {
-  padding-top: 15vh; /* No JS fallback*/
-  padding-bottom: 5vh; /* No JS fallback*/
+  padding-top: 10vh; /* No JS fallback*/
+  padding-bottom: 0vh; /* No JS fallback*/
 }
 
 .profile-image {

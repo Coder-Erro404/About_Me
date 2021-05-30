@@ -81,8 +81,8 @@ a.navbar-brand .fa-globe:hover
 .profile-image {
   border-radius: 50%;
   display: block;
-  max-height:250px;
-  max-width: 250px;
+  max-height:200px;
+  max-width: 200px;
   margin: 0 auto 1em;
   width: 100%;
   opacity: 0.85;
@@ -1076,3 +1076,14 @@ hr {
 {
   color: #007bb6;
 }
+.row1
+{
+  max-width: 68em;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1em;
+}
+
+

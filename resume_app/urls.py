@@ -7,7 +7,7 @@ urlpatterns = [
     path("",views.index, name='resume'),
     path('index', views.index, name='index'),
     path('project', views.project, name='project'),
-    path('Notes', views.Notes, name='Notes'),
-    path('addblog', views.addblogs),
+    path('Note', views.Note , name='Note'),
+    # path('addblog', views.addblogs),
     path('contact', views.contact, name='contact'),
    ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

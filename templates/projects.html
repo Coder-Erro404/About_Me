@@ -31,9 +31,9 @@
       <p class="blue-more">
         <a href="{{ addblog.p_url }}"><i class="fa fa-github"> </i> :- {{ addblog.p_url }}</a>
       </p>
-      <p class="read-more">
+      {% comment %} <p class="read-more">
         <a href="#">Read More</a>
-      </p>
+      </p> {% endcomment %}
     </div>
   </div>
                     </div>
@@ -41,24 +41,42 @@
             </section>
       {% endfor %}
 <center>
-<div class="pagination">
-    <span class="step-links">
+<nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
-            <a class="center" href="?page=1">&laquo; first</a>
-            <a class="center" href="?page={{ page_obj.previous_page_number }}">previous</a>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+          </li>
         {% endif %}
-
-        <span class="current center">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
+        {% for i in page_obj.paginator.page_range %}
+          {% if page_obj.number == i %}
+            <li class="page-item active" aria-current="page">
+              <span class="page-link">
+                {{ i }}
+                <span class="sr-only">(current)</span>
+              </span>
+            </li>
+          {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
         {% if page_obj.has_next %}
-            <a class="center" href="?page={{ page_obj.next_page_number }}">next</a>
-            <a class="center" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+          </li>
         {% endif %}
-    </span>
-</div>
+      </ul>
+    </nav>
 </center>
+    
 
 
 {% endblock content %}

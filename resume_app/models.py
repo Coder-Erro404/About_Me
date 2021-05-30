@@ -22,3 +22,13 @@ class addblog(models.Model):
      timeStamp=models.DateTimeField(auto_now_add=True, blank=True)
      def __str__(self):
       return "Project_Name"+ " :  "+ self.p_name 
+
+class Notes(models.Model):
+     sno= models.AutoField(primary_key=True)
+     header= models.CharField(max_length=500)
+     Author= models.CharField(max_length=255)
+     content= models.TextField()
+     p_url= models.CharField(max_length=255)
+     timeStamp=models.DateTimeField(auto_now_add=True, blank=True)
+     def __str__(self):
+      return "header"+ " :  "+ self.header 

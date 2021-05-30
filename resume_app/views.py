@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib import  messages
-from .models import Contact ,addblog
+from .models import Contact ,addblog ,Notes
 from django.contrib import  messages
 from django.core.paginator import Paginator
 
@@ -18,8 +18,12 @@ def project(request):
     page_obj = paginator.get_page(page_number)
     return render(request, 'projects.html',{'page_obj': page_obj})
     
-def Notes(request):
-    return render(request, 'Notes.html')
+def Note(request):
+    data = Notes.objects.all()
+    paginator = Paginator(data, 1) # Show 25 contacts per page.
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)  
+    return render(request, 'Notes.html', {'page_obj': page_obj})
 
 def addblogs(request):
     data = addblog.objects.all()

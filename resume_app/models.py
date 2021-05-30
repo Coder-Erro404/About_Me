@@ -17,6 +17,7 @@ class addblog(models.Model):
      author= models.CharField(max_length=225)
      content= models.TextField()
      Decri= models.CharField(max_length=255)
+     p_url= models.CharField(max_length=255)
      Img = models.ImageField(upload_to='add_images')
      timeStamp=models.DateTimeField(auto_now_add=True, blank=True)
      def __str__(self):

@@ -1068,8 +1068,11 @@ hr {
   );
 }
 
-.post {
-  margin-top: 20px;
-  padding: 50px;
+.Notes {
+  padding-left: 50px;
+  padding-right: 50px;
 }
-
+.blue-more
+{
+  color: #007bb6;
+}

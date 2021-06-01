@@ -26,7 +26,7 @@ def blogs(request):
     return render(request, 'Blogs.html', {'page_obj': page_obj})
 def documents(request):
     data = Document.objects.all()
-    paginator = Paginator(data, 6) # Show 25 contacts per page.
+    paginator = Paginator(data, 8) # Show 25 contacts per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)  
     return render(request, 'documents.html', {'page_obj': page_obj})

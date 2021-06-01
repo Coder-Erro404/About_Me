@@ -43,43 +43,6 @@ document.addEventListener("DOMContentLoaded", function() { // On DOM Load initia
 
 // read more 
 
-var charLimit = 200;
-
-function truncate(el) {
-  var shortText = $('<p/>'),
-    originalContent = el.html(),
-    text = el.text().trim();
-
-  if (text.length > charLimit) {
-    el.next(".read-more").length || el.after('<div class="read-more"><a href="#" class="more">Read More</a>');
-    el.attr("data-originalContent", originalContent);
-    shortText.text(text.substring(0, charLimit) + "...")
-    el.html(shortText);
-  }
-}
-
-function reveal(el) {
-  el.html(el.attr("data-originalContent"));
-}
-
-$(".container").on("click", ".more", function(e) {
-  e.preventDefault();
-  var truncateElement = $(this).parent().prev(".truncate");
-  if ($(this).text() === "Read More") {
-    $(this).text("Read Less");
-    reveal(truncateElement);
-  } else {
-    $(this).text("Read More");
-    truncate(truncateElement);
-  }
-});
-
-$(".truncate").each(function() {
-  truncate($(this));
-});
-
-// read more end
-// gallery
 // Gallery image hover
 $( ".img-wrapper" ).hover(
   function() {
@@ -166,4 +129,5 @@ $exitButton.click(function() {
   // Fade out the overlay
   $("#overlay").fadeOut("slow");
 });
+
 // gallery end

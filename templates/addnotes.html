@@ -1,0 +1,55 @@
+<center>
+<h2> Notes <h2>
+</center>
+ {% for Notes in page_obj  %}
+
+<div class="container ">
+<div class="row1">
+  <div class="row">
+    
+    <div class="col-4"><h3>{{ Notes.header }}</h3></div>
+    <div class="col-6"><h5>By:-{{ Notes.Author }} </h5></div>
+    <div class="col-9"><div class="date">{{ Notes.timeStamp }}</div>
+    <div class="col-6"><p>{{ Notes.content|safe }} </p>
+     <hr>
+    </div>
+  </div>
+</div>
+</div>
+      {% endfor %}
+<center>
+<nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+          </li>
+        {% endif %}
+        {% for i in page_obj.paginator.page_range %}
+          {% if page_obj.number == i %}
+            <li class="page-item active" aria-current="page">
+              <span class="page-link">
+                {{ i }}
+                <span class="sr-only">(current)</span>
+              </span>
+            </li>
+          {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+</center>

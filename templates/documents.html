@@ -1,52 +1,42 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-
 <figure class="text-center">
       <blockquote class="blockquote">
-      <h2>&#9733; PROJECTS &#9733;</h2>
+      <h2>&#9733; My Documents &#9733;</h2>
         <p><strong></p></strong>
       </blockquote>
       <hr>
-    </figure>
-<br>
- {% for project in page_obj  %}
+</figure>
+{% for Document in page_obj  %}
+                {% if forloop.first %}
+                <section id="gallery">
+                <div class="container">
+                <div id="image-gallery">
+                <div class="row">
+                {% endif %}
+                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 image">
+                <div class="img-wrapper">
+                 <a href="{{ Document.document_img.url }}"><img src="{{ Document.document_img.url }}" class="img-responsive"></a>
+                <div class="img-overlay">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                </div>
+                </div>
+            </div>
+                {% if forloop.counter|divisibleby:25 %}
+                    </div>
+                    </div>
+                    </div>
+                <section id="gallery">
+                {% endif %}
+                {% if forloop.last %}
+                        </div>
+                        </section>
+                {% endif %}
+                
+{% endfor %}
 
-    <section class="blog" id="Blog">
-         <div class="blog-card">
-        <div class="meta">
-        <div class="photo" style="background-image: url({{ project.Img.url }})"></div>      <ul class="details">
-        <li class="author"><a href="#">{{ project.p_name}}</a></li>
-        <li class="date">{{ project.timeStamp }}</li>
-        <li class="tags">
-          <ul>
-            <li><a href="#">Django</a></li>
-            <li><a href="#">Coding</a></li>
-            <li><a href="#">HTML</a></li>
-            <li><a href="#">CSS</a></li>
-            <li><a href="#">Bootstrap</a></li>
-            <li><a href="#">JavaScript</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="description">
-      <h1>{{ project.p_name }}</h1>
-      <h2>{{ project.author }}</h2>
-      <p> {{ project.content }}</p>
-      <p class="blue-more">
-        <a href="{{ project.p_url }}"><i class="fa fa-github"> </i> :- {{ project.p_url }}</a>
-      </p>
-      {% comment %} <p class="read-more">
-        <a href="#">Read More</a>
-      </p> {% endcomment %}
-    </div>
-  </div>
-                    </div>
-                    </div>
-            </section>
-      {% endfor %}
-<center>
+    <center>
 <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
@@ -82,7 +72,4 @@
       </ul>
     </nav>
 </center>
-    
-
-
 {% endblock content %}

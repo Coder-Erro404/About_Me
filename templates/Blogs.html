@@ -3,26 +3,25 @@
 {% block content %}
 
 
-<center>
-<h2> Notes <h2>
-</center>
- {% for Notes in page_obj  %}
+    <figure class="text-center">
+      <blockquote class="blockquote">
+      <h2>&#9733; BLOG'S &#9733;</h2>
+        <p><strong></p></strong>
+      </blockquote>
+      <hr>
+    </figure>
+ {% for blog in page_obj  %}
 
 <div class="container ">
 <div class="row1">
-  <div class="row">
-    
-    <div class="col-4"><h2>{{ Notes.header }}</h2></div>
-    <div class="col-6"><h4>:-{{ Notes.Author }} </h4></div>
-    <div class="col-9"><div class="date">{{ Notes.timeStamp }}</div>
-    <div class="col-6"><p>{{ Notes.content }} </p>
-    <a href="{{ Notes.p_url }}"> :- {{ Notes.p_url }}</a>
-     <hr>
-    </div>
-  </div>
+    <div class="col-4"><h3>{{ blog.header }}</h3></div>
+    <div class="col-6"><h5>By:-{{ blog.Author }} </h5></div>
+    <div class="col-9"><div class="date">{{ blog.timeStamp }}</div>
+    <div class="col-6"><p>{{ blog.content|safe }} </p></div></div>
 </div>
 </div>
       {% endfor %}
+      
 <center>
 <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">

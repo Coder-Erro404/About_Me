@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib import  messages
-from .models import Contact ,addblog ,Notes
+from .models import Contact , project  , blog , Document
 from django.contrib import  messages
 from django.core.paginator import Paginator
 
@@ -11,25 +11,31 @@ def index(request):
 	return render(request, 'index.html')
 	 
 
-def project(request):
-    data = addblog.objects.all()
+def projects(request):
+    data = project.objects.all()
     paginator = Paginator(data, 3) # Show 25 contacts per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     return render(request, 'projects.html',{'page_obj': page_obj})
     
-def Note(request):
-    data = Notes.objects.all()
-    paginator = Paginator(data, 1) # Show 25 contacts per page.
+def blogs(request):
+    data = blog.objects.all()
+    paginator = Paginator(data, 4) # Show 25 contacts per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)  
-    return render(request, 'Notes.html', {'page_obj': page_obj})
+    return render(request, 'Blogs.html', {'page_obj': page_obj})
+def documents(request):
+    data = Document.objects.all()
+    paginator = Paginator(data, 6) # Show 25 contacts per page.
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)  
+    return render(request, 'documents.html', {'page_obj': page_obj})
 
-def addblogs(request):
-    data = addblog.objects.all()
-    paginator = Paginator(data, 25)
-    blog = {"sno": data}
-    return render(request, 'addblog.html',blog)
+# def addblogs(request):
+#     data = addblog.objects.all()
+#     paginator = Paginator(data, 25)
+#     blog = {"sno": data}
+#     return render(request, 'addblog.html',blog)
 
 def contact(request):
     if request.method=="POST":

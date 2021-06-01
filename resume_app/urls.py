@@ -6,8 +6,9 @@ from . import views
 urlpatterns = [
     path("",views.index, name='resume'),
     path('index', views.index, name='index'),
-    path('project', views.project, name='project'),
-    path('Note', views.Note , name='Note'),
+    path('project', views.projects, name='project'),
+    path('blogs', views.blogs , name='blogs'),
+    path('documents', views.documents , name='documents'),
     # path('addblog', views.addblogs),
     path('contact', views.contact, name='contact'),
    ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
